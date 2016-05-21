@@ -1,0 +1,16 @@
+.btn {
+    -fx-padding: 5 22 5 22;
+    -fx-border-style: null;
+    -fx-background-radius: 0;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 11pt;
+//-fx-margin: 10px;
+
+
+    -fx-background-color: #008287;
+    -fx-text-fill: #ffffff;
+}
+
+.btn:hover{
+    -fx-background-color: #219297;
+}
