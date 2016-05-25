@@ -1,5 +1,7 @@
 package org.nda.javafx.piradioplayer2.config;
 
+import org.nda.javafx.piradioplayer2.utils.ErrorHandler;
+
 import java.io.*;
 import java.util.Properties;
 
@@ -36,12 +38,14 @@ public class MyConfig {
             props.load(reader);
             reader.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            new ErrorHandler(e, null);
         }
     }
 
     public String getProperty(String property){
-        return props.getProperty(property);
+        return  (props.getProperty(property) != null) ? props.getProperty(property) : "";
+        //return res;
+
     }
 
     public void setProperty(String property, String value){
@@ -54,7 +58,7 @@ public class MyConfig {
             props.store(writer, "host settings");
             writer.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            new ErrorHandler(e, null);
         }
     }
 

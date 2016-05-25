@@ -110,6 +110,8 @@ public class PlayerControls {
 
     public  void setDefaultMPC(){
         ssh.sendCommand("mpc volume 100");
+        ssh.sendCommand("mpc random on");
+        ssh.sendCommand("mpc repeat on");
     }
 
 

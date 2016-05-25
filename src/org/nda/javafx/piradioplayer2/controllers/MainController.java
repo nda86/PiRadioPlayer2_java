@@ -163,6 +163,9 @@ public class MainController  {
         btnRandom.textProperty().bind(ModelPlayer.getInstance().randomProperty());
         btnRepeat.textProperty().bind(ModelPlayer.getInstance().repeatProperty());
 
+        btnRandom.setDisable(MyConfig.getInstance().getProperty("user") == "");
+        btnRepeat.setDisable(MyConfig.getInstance().getProperty("user") == "");
+
         idColumn.setCellValueFactory(param -> param.getValue().getIdProperty().asObject());
         songColumn.setCellValueFactory(param -> param.getValue().getSongProperty());
         removeColumn.setCellValueFactory(param -> param.getValue().getDeleteProperty());
@@ -226,14 +229,18 @@ public class MainController  {
 
 
         btnConnect.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) -> {
-            String user = MyConfig.getInstance().getProperty("user");
+
             String host = MyConfig.getInstance().getProperty("host");
+            String user = MyConfig.getInstance().getProperty("user");
             String password = MyConfig.getInstance().getProperty("password");
             int port = 22;
+            user = (user != "") ? user : "radio";
+            password = (password != "") ? password : "data1234";
             ssh.connect(user, host, port, password);
             player.setDefaultMPC();
             refreshConnectStatus();
             refresh();
+
         });
 
         btnDisconnect.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) -> {
@@ -243,9 +250,9 @@ public class MainController  {
 
         btnSettings.addEventHandler(MouseEvent.MOUSE_CLICKED, (e) -> {
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("../views/settings.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("views/settings.fxml"));
                 Scene scene = new Scene(root, 225, 145);
-                scene.getStylesheets().add(getClass().getResource("../views/settings.css").toExternalForm());
+                scene.getStylesheets().add(getClass().getResource("views/settings.css").toExternalForm());
                 Stage stage = new Stage();
                 stage.initStyle(StageStyle.UTILITY);
                 stage.setTitle("Настройки");
@@ -253,7 +260,7 @@ public class MainController  {
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
             } catch (IOException e1) {
-                e1.printStackTrace();
+                new ErrorHandler(e1, null);
             }
         });
 

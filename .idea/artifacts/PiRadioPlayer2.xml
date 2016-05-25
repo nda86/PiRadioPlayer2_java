@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" build-on-make="true" name="PiRadioPlayer2">
+    <output-path>$PROJECT_DIR$/out/artifacts/PiRadioPlayer2</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="org.nda.javafx.piradioplayer2.Main" />
+        <option name="description" value="" />
+        <option name="htmlParamFile" value="" />
+        <option name="paramFile" value="" />
+        <option name="title" value="" />
+        <option name="vendor" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="PiRadioPlayer2.jar">
+        <element id="module-output" name="PiRadioPlayer2" />
+      </element>
+    </root>
+  </artifact>
+</component>

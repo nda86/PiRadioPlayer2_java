@@ -33,10 +33,17 @@ public class SettingsController {
         txtUser.setText(config.getProperty("user"));
         txtPassword.setText(config.getProperty("password"));
 
+        txtUser.setDisable(config.getProperty("user") == "");
+        txtPassword.setDisable(config.getProperty("password") == "");
+
         btnSave.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
             config.setProperty("host", txtHost.getText());
-            config.setProperty("user", txtUser.getText());
-            config.setProperty("password", txtPassword.getText());
+
+            if (!txtUser.isDisabled()){
+                config.setProperty("user", txtUser.getText());
+                config.setProperty("password", txtPassword.getText());
+            }
+
             config.save();
             Stage stage = (Stage) btnSave.getScene().getWindow();
             stage.close();
