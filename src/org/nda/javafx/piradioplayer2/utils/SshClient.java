@@ -1,6 +1,7 @@
 package org.nda.javafx.piradioplayer2.utils;
 
 import com.jcraft.jsch.*;
+import org.nda.javafx.piradioplayer2.Main;
 import org.nda.javafx.piradioplayer2.models.ModelPlayer;
 
 import java.io.IOException;
@@ -40,7 +41,6 @@ public class SshClient {
             channel.disconnect();
         } catch (JSchException | IOException e) {
             new ErrorHandler(e, null);
-            e.printStackTrace();
         }
 
         return outputBuffer.toString();

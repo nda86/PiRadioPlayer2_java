@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.nda.javafx.piradioplayer2.config.MyConfig;
 
 public class Main extends Application {
 
@@ -19,7 +20,11 @@ public class Main extends Application {
         mainScene.getStylesheets().add(getClass().getResource("views/MainForm.css").toExternalForm());
         primaryStage.setResizable(false);
         primaryStage.setScene(mainScene);
+
+        MyConfig myConfig = MyConfig.getInstance("config.properties");
         primaryStage.show();
+
+        //System.out.println(System.getProperty("user.dir"));
     }
 
 

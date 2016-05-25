@@ -10,6 +10,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.nda.javafx.piradioplayer2.config.MyConfig;
 import org.nda.javafx.piradioplayer2.models.ModelPlayer;
 import org.nda.javafx.piradioplayer2.models.ModelPlaylist;
 import org.nda.javafx.piradioplayer2.utils.*;
@@ -225,12 +226,12 @@ public class MainController  {
 
 
         btnConnect.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) -> {
-            String username = "radio";
-            String host = "192.168.226.141";
-            String password = "data1234";
+            String user = MyConfig.getInstance().getProperty("user");
+            String host = MyConfig.getInstance().getProperty("host");
+            String password = MyConfig.getInstance().getProperty("password");
             int port = 22;
-            ssh.connect(username, host, port, password);
-
+            ssh.connect(user, host, port, password);
+            player.setDefaultMPC();
             refreshConnectStatus();
             refresh();
         });
