@@ -185,7 +185,7 @@ public class MainController  {
 
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.get() == ButtonType.OK){
-                    player.deleteSong(x);
+                    player.deleteSong(x, song);
                     refresh();
                 } else {
                     alert.close();
@@ -230,6 +230,7 @@ public class MainController  {
             String password = "data1234";
             int port = 22;
             ssh.connect(username, host, port, password);
+
             refreshConnectStatus();
             refresh();
         });

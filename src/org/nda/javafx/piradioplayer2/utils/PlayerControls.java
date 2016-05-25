@@ -108,6 +108,10 @@ public class PlayerControls {
         return songs;
     }
 
+    public  void setDefaultMPC(){
+        ssh.sendCommand("mpc volume 100");
+    }
+
 
     public ObservableList<ModelPlaylist> getPlaylist(){
         playlist = FXCollections.observableArrayList();
@@ -126,11 +130,10 @@ public class PlayerControls {
         ssh.sendCommand(command);
     }
 
-    public void deleteSong(int idSong){
+    public void deleteSong(int idSong, String song){
         ssh.sendCommand("mpc del " + idSong);
+        ssh.sendCommand("echo " + song + " >> /home/pi/logs/delete_pls.log");
         playlist.remove(idSong);
     }
-
-
 
 }
